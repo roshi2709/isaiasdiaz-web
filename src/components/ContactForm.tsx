@@ -11,19 +11,19 @@ const siteKey=process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY||'';
 const endpoint=process.env.NEXT_PUBLIC_CONTACT_API_URL||'';
 export default function ContactForm({lang}:{lang:Lang}){
  const t=translations[lang];const target=useRef<HTMLDivElement>(null);const widget=useRef<string|null>(null);
- const [token,setToken]=useState('');const [status,setStatus]=useState<'idle'|'sending'|'success'|'error'>('idle');const [feedback,setFeedback]=useState('');
+ const [token,setToken]=useState('');const [status,setStatus]=useState<'idle'|'sending'|'success'|'error'>('idle');const [feedback,setFeedback]=useState('');const [turnstileFailed,setTurnstileFailed]=useState(false);
  useEffect(()=>{if(!siteKey||!target.current)return;let cancelled=false;let interval:ReturnType<typeof setInterval>|undefined;
- const init=()=>{if(cancelled||!target.current||!window.turnstile||widget.current)return;widget.current=window.turnstile.render(target.current,{sitekey:siteKey,callback:setToken,'expired-callback':()=>setToken('')});if(interval)clearInterval(interval)};
- if(!document.querySelector('script[data-contact-turnstile]')){const script=document.createElement('script');script.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';script.async=true;script.defer=true;script.dataset.contactTurnstile='true';script.onload=init;document.head.appendChild(script)}
+ const init=()=>{if(cancelled||!target.current||!window.turnstile||widget.current)return;try{widget.current=window.turnstile.render(target.current,{sitekey:siteKey,callback:setToken,'expired-callback':()=>setToken('')});if(interval)clearInterval(interval)}catch(error){console.error('Turnstile initialization failed',error);setTurnstileFailed(true);if(interval)clearInterval(interval)}};
+ if(!document.querySelector('script[data-contact-turnstile]')){const script=document.createElement('script');script.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';script.async=true;script.defer=true;script.dataset.contactTurnstile='true';script.onload=init;script.onerror=()=>{setTurnstileFailed(true);if(interval)clearInterval(interval)};document.head.appendChild(script)}
  interval=setInterval(init,300);init();
- return()=>{cancelled=true;if(interval)clearInterval(interval);if(widget.current&&window.turnstile){window.turnstile.remove(widget.current);widget.current=null}};
+ return()=>{cancelled=true;if(interval)clearInterval(interval);if(widget.current&&window.turnstile){try{window.turnstile.remove(widget.current)}catch(error){console.warn('Turnstile cleanup failed',error)}widget.current=null}};
  },[]);
  async function submit(e:React.FormEvent<HTMLFormElement>){e.preventDefault();if(status==='sending')return;if(!token){setFeedback(t.verify);setStatus('error');return}
  const form=e.currentTarget;const data=new FormData(form);setStatus('sending');setFeedback('');
  try{const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:data.get('name'),email:data.get('email'),service:data.get('service'),message:data.get('message'),website:data.get('website'),turnstileToken:token})});
  if(!response.ok)throw Error('Failed');setStatus('success');setFeedback(t.success);form.reset()}catch{setStatus('error');setFeedback(t.error)}
- finally{setToken('');if(widget.current&&window.turnstile)window.turnstile.reset(widget.current)}
+ finally{setToken('');if(widget.current&&window.turnstile){try{window.turnstile.reset(widget.current)}catch(error){console.warn('Turnstile reset failed',error)}}}
  }
- if(!siteKey||!endpoint)return <div className="contact-form"><p className="lead">{t.setup}</p><a className="btn primary" href="mailto:contacto@isaiasdiaz.com">✉ contacto@isaiasdiaz.com</a></div>;
+ if(!siteKey||!endpoint||turnstileFailed)return <div className="contact-form"><p className="lead">{t.setup}</p><a className="btn primary" href="mailto:contacto@isaiasdiaz.com">✉ contacto@isaiasdiaz.com</a></div>;
  return <form className="contact-form" onSubmit={submit}><div className="form-grid"><label>{t.name}<input name="name" required maxLength={100} autoComplete="name"/></label><label>{t.email}<input name="email" type="email" required maxLength={200} autoComplete="email"/></label></div><label>{t.service}<select name="service" required defaultValue=""><option value="" disabled>{t.choose}</option>{t.services.map(s=><option key={s} value={s}>{s}</option>)}</select></label><label>{t.message}<textarea name="message" required minLength={10} maxLength={4000} rows={5}/></label><div className="honeypot" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off"/></label></div><div ref={target}/><button className="btn primary" type="submit" disabled={status==='sending'}>{status==='sending'?t.sending:t.send}</button>{feedback&&<p role="status" className={status==='success'?'form-success':'form-error'}>{feedback}</p>}</form>
 }
