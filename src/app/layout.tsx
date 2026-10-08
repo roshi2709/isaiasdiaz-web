@@ -1,3 +1,4 @@
 import './globals.css';
-export const metadata = {title:'Isaías Díaz | Tecnología e innovación',description:'Proyectos digitales, desarrollo web y automatización con inteligencia artificial.'};
+import type { Metadata } from 'next';
+export const metadata: Metadata = {metadataBase:new URL('https://isaiasdiaz.com'),title:{default:'Isaías Díaz | Desarrollo web, IA y soluciones digitales',template:'%s | Isaías Díaz'},description:'Desarrollo web, aplicaciones y automatización con inteligencia artificial. Conoce los proyectos y servicios digitales de Isaías Díaz.',robots:{index:true,follow:true},openGraph:{type:'website',siteName:'Isaías Díaz',url:'https://isaiasdiaz.com',locale:'es_SV',title:'Isaías Díaz | Soluciones digitales',description:'Desarrollo web, aplicaciones y automatización con IA.'},twitter:{card:'summary',title:'Isaías Díaz | Soluciones digitales',description:'Desarrollo web, aplicaciones y automatización con IA.'}};
 export default function RootLayout({children}:{children:React.ReactNode}) {return <html lang="es" suppressHydrationWarning><body>{children}</body></html>}
