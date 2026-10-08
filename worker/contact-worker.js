@@ -1,4 +1,3 @@
-import { EmailMessage } from 'cloudflare:email';
 const allowedOrigins=new Set(['https://isaiasdiaz.com','https://www.isaiasdiaz.com','https://isaiasdiaz-web.pages.dev']);
 function headers(origin){return {'Access-Control-Allow-Origin':allowedOrigins.has(origin)?origin:'https://isaiasdiaz.com','Access-Control-Allow-Methods':'POST, OPTIONS','Access-Control-Allow-Headers':'Content-Type','Vary':'Origin','Content-Type':'application/json;charset=utf-8','Cache-Control':'no-store'}}
 function reply(status,body,origin){return new Response(JSON.stringify(body),{status,headers:headers(origin)})}
@@ -20,7 +19,10 @@ export default {async fetch(request,env){
  if(!verification.success)return reply(403,{error:'Security verification failed'},origin);
  const from='contacto@isaiasdiaz.com',to='isaiasdiaz@yahoo.com';
  const subject=safeHeader('Consulta web: '+service);
- const text=['Nueva consulta desde isaiasdiaz.com','Nombre: '+name.trim(),'Email: '+email.trim(),'Servicio: '+service.trim(),'','Mensaje:',message.trim()].join('\r\n');
- const mime=['From: '+from,'To: '+to,'Subject: '+subject,'MIME-Version: 1.0','Content-Type: text/plain; charset=UTF-8','Content-Transfer-Encoding: 8bit','',''+text].join('\r\n');
- try{await env.CONTACT_EMAIL.send(new EmailMessage(from,to,mime));return reply(200,{ok:true},origin)}catch{return reply(502,{error:'Email delivery failed'},origin)}
+ const text=['Nueva consulta desde isaiasdiaz.com','Nombre: '+name.trim(),'Email: '+email.trim(),'Servicio: '+service.trim(),'','Mensaje:',message.trim()].join('\n');
+ try{
+  await env.CONTACT_EMAIL.send({from,to,subject,text});
+  return reply(200,{ok:true},origin);
+ }catch(error){console.error('Email service send failed',error);return reply(502,{error:'Email delivery failed'},origin)}
+
  }};
