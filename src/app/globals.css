@@ -46,3 +46,9 @@ body{background:radial-gradient(ellipse 70% 38% at 85% 3%,rgba(42,126,248,.11),t
 .contact-form .honeypot{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .form-success{color:#15946b}.form-error{color:#d14949}
 @media(max-width:600px){.contact-form{padding:18px}.contact-form .form-grid{grid-template-columns:1fr}}
+
+/* Commercial services and accessibility */
+.service-benefits{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.service-benefits span{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:8px 14px;color:var(--muted);font-size:.9rem}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.section{scroll-margin-top:24px}
