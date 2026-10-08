@@ -8,3 +8,6 @@ workers_dev = true
 # 2. Send Email binding CONTACT_EMAIL with verified destination isaiasdiaz@yahoo.com
 # 3. Deploy and copy your workers.dev URL to Pages variable NEXT_PUBLIC_CONTACT_API_URL
 # 4. Add NEXT_PUBLIC_TURNSTILE_SITE_KEY to Pages build variables
+
+[[send_email]]
+name = "CONTACT_EMAIL"
