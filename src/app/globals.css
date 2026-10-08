@@ -35,3 +35,14 @@ body{background:radial-gradient(ellipse 70% 38% at 85% 3%,rgba(42,126,248,.11),t
 @media(max-width:850px){.hero-layout{grid-template-columns:1fr;min-height:unset}.hero-art{max-width:350px}.hero{padding-top:70px}.nav{gap:12px}}
 @media(max-width:500px){.hero h1{font-size:2.65rem}.hero-art{max-width:290px}.hero-chips{margin-top:28px}.section{padding-top:45px;padding-bottom:45px}}
 @media(prefers-reduced-motion:reduce){.art-core{animation:none}.card,.btn{transition:none}}
+
+.contact-form{margin-top:28px;max-width:760px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:30px;display:grid;gap:18px;box-shadow:0 18px 40px rgba(11,45,99,.05)}
+.contact-form label{display:grid;gap:7px;font-weight:650;font-size:.92rem}
+.contact-form input,.contact-form select,.contact-form textarea{width:100%;border:1px solid var(--border);border-radius:11px;background:var(--bg);color:var(--fg);padding:12px 14px;font:inherit}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{outline:2px solid var(--accent);outline-offset:2px}
+.contact-form .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.contact-form button{justify-self:start}
+.contact-form button:disabled{opacity:.6;cursor:wait}
+.contact-form .honeypot{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-success{color:#15946b}.form-error{color:#d14949}
+@media(max-width:600px){.contact-form{padding:18px}.contact-form .form-grid{grid-template-columns:1fr}}
