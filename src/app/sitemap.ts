@@ -1,2 +1,9 @@
 import type { MetadataRoute } from 'next';
-export default function sitemap():MetadataRoute.Sitemap {return ['','es/','en/','pt/'].map(p=>({url:'https://isaiasdiaz.com/'+p,lastModified:new Date(),changeFrequency:'monthly',priority:p===''?1:0.8}))}
+export const dynamic = 'force-static';
+export default function sitemap(): MetadataRoute.Sitemap {
+  return ['', 'es/', 'en/', 'pt/'].map((path) => ({
+    url: `https://isaiasdiaz.com/${path}`,
+    changeFrequency: 'monthly',
+    priority: path === '' ? 1 : 0.8,
+  }));
+}
