@@ -1,0 +1,17 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+const translations={
+ es:{title:'Libros de Isaías Díaz',description:'Descubre los libros publicados por Isaías Díaz y encuéntralos en Amazon.',heading:'Libros y publicaciones',intro:'Un espacio para compartir mis libros sobre finanzas personales, aprendizaje y crecimiento. Aquí encontrarás las publicaciones disponibles en Amazon.',book:'Publicación disponible en Amazon',detail:'Consulta el título, la descripción y los formatos disponibles directamente en Amazon.',buy:'Ver libro en Amazon',back:'Volver al inicio',author:'Autor: Isaías Díaz'},
+ en:{title:'Books by Isaías Díaz',description:'Explore books by Isaías Díaz available on Amazon.',heading:'Books and publications',intro:'A place to share my books about personal finance, learning and growth. Find my publications on Amazon.',book:'Publication available on Amazon',detail:'Check the title, description and available formats directly on Amazon.',buy:'View on Amazon',back:'Back to home',author:'Author: Isaías Díaz'},
+ pt:{title:'Livros de Isaías Díaz',description:'Conheça os livros de Isaías Díaz disponíveis na Amazon.',heading:'Livros e publicações',intro:'Um espaço para compartilhar meus livros sobre finanças pessoais, aprendizado e crescimento. Encontre minhas publicações na Amazon.',book:'Publicação disponível na Amazon',detail:'Confira o título, a descrição e os formatos disponíveis diretamente na Amazon.',buy:'Ver na Amazon',back:'Voltar ao início',author:'Autor: Isaías Díaz'}
+} as const;
+type Lang=keyof typeof translations;
+export function generateStaticParams(){return [{lang:'es'},{lang:'en'},{lang:'pt'}]}
+export async function generateMetadata({params}:{params:Promise<{lang:string}>}):Promise<Metadata>{
+ const {lang}=await params;const locale:Lang=lang==='en'||lang==='pt'?lang:'es';const t=translations[locale];
+ const root='https://isaiasdiaz.com';return {title:t.title,description:t.description,alternates:{canonical:`${root}/${locale}/libros/`,languages:{es:`${root}/es/libros/`,en:`${root}/en/libros/`,pt:`${root}/pt/libros/`}},openGraph:{title:t.title,description:t.description,url:`${root}/${locale}/libros/`,type:'website'}};
+}
+export default async function Books({params}:{params:Promise<{lang:string}>}){
+ const {lang}=await params;const locale:Lang=lang==='en'||lang==='pt'?lang:'es';const t=translations[locale];
+ return <><header className="top wrap"><Link className="brand" href={`/${locale}/`}>Isaías Díaz</Link><nav className="nav"><Link href={`/${locale}/`}>{t.back}</Link></nav><div className="langs">{(['es','en','pt'] as const).map(x=><Link key={x} href={`/${x}/libros/`} aria-current={locale===x?'page':undefined}>{x.toUpperCase()}</Link>)}</div></header><main className="wrap"><section className="section"><div className="eyebrow">Amazon Kindle Direct Publishing</div><h1>{t.heading}</h1><p className="lead">{t.intro}</p><div className="grid"><article className="card"><div className="project-icon" aria-hidden="true">▤</div><h2 style={{fontSize:'1.35rem'}}>{t.book}</h2><p>{t.author}</p><p>{t.detail}</p><a className="btn primary" href="https://www.amazon.com/dp/B0H4CV13VV" target="_blank" rel="noopener noreferrer" style={{color:'white'}}>{t.buy} ↗</a></article></div></section></main><footer className="footer"><div className="wrap">© {new Date().getFullYear()} Isaías Díaz</div></footer></>;
+}
