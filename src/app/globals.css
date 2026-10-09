@@ -203,3 +203,22 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .studio-shop-body h3,.studio-shop-body p{overflow-wrap:break-word}
 @media(max-width:1050px){.studio-shop-cover strong{font-size:clamp(24px,4vw,38px)}}
 @media(max-width:600px){.studio-shop-cover strong{font-size:clamp(30px,8vw,42px)}}
+
+/* Contact page */
+.studio-contact-page-hero{padding:100px 0 110px;background:radial-gradient(circle at 80% 20%,#166dc888,transparent 46%),linear-gradient(120deg,#06162f,#123971);color:white}
+.studio-contact-page-hero .studio-section-kicker{color:#9ed4ff}
+.studio-contact-page-hero h1{font-size:clamp(3rem,6vw,5.5rem);max-width:870px;margin:14px 0 25px}
+.studio-contact-page-hero p{max-width:680px;font-size:17px;line-height:1.85;color:#c3d7f1;margin-bottom:30px}
+.studio-contact-page-main{background:#f3f7ff;padding:90px 0 110px}
+.studio-contact-page-main h2{margin:5px 0 35px}
+.studio-contact-topic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.studio-contact-topic{background:white;border:1px solid #dce7f5;border-radius:20px;padding:30px;box-shadow:0 16px 45px #0d3a7c0a}
+.studio-contact-topic-icon{width:43px;height:43px;display:grid;place-items:center;background:#e8f2ff;color:#0e69e4;border-radius:12px;font-size:23px;font-weight:800}
+.studio-contact-topic h3{font-size:24px;margin:20px 0 10px;letter-spacing:-.04em}
+.studio-contact-topic p{font-size:14px;line-height:1.8;color:#697992}
+.studio-contact-topic a{font-size:13px;color:#0b69df;font-weight:850}
+.studio-contact-direct{margin-top:30px;padding:36px;border-radius:20px;background:#e4efff;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.studio-contact-direct h3{font-size:25px;margin:8px 0}
+.studio-contact-direct p{font-size:14px;color:#677993}
+.studio-contact-direct>a{font-size:16px;font-weight:850;color:#0a63d8;overflow-wrap:anywhere}
+@media(max-width:760px){.studio-contact-page-hero{padding:65px 0 75px}.studio-contact-page-main{padding:65px 0}.studio-contact-topic-grid{grid-template-columns:1fr}.studio-contact-direct{display:block;padding:25px}.studio-contact-direct>a{display:block;margin-top:22px}}
