@@ -365,3 +365,11 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 /* Consistent Isaías Díaz branding on book headers */
 .books-header-logo{display:inline-flex;align-items:center;max-width:min(220px,48vw);text-decoration:none}
 .books-header-logo img{display:block;width:100%;height:auto;max-height:68px;object-fit:contain;object-position:left center}
+
+/* ID-only monogram and adjacent name on the public maintenance page */
+.maintenance-brand{display:flex;align-items:center;justify-content:center;gap:16px;margin:0 auto 25px;max-width:100%}
+.maintenance-brand .maintenance-logo{width:clamp(70px,15vw,108px);height:auto;max-height:108px;object-fit:contain;margin:0;background:transparent;padding:0;border-radius:0;box-shadow:none;flex-shrink:0}
+.maintenance-brand-text{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:3px}
+.maintenance-brand-text strong{font-size:clamp(1.35rem,4.3vw,2.3rem);line-height:1.1;letter-spacing:-.035em;color:#fff}
+.maintenance-brand-text span{font-size:clamp(.7rem,2.1vw,.95rem);font-weight:650;letter-spacing:.07em;color:#c7ddff}
+@media(max-width:380px){.maintenance-brand{gap:10px}.maintenance-brand .maintenance-logo{width:68px}}
