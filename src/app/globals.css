@@ -273,3 +273,24 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .studio-shop-faq summary{font-weight:800;color:#163250;cursor:pointer}
 .studio-shop-faq details p{color:#5b6f89;font-size:14px;line-height:1.8;margin-bottom:0}
 @media(max-width:800px){.studio-shop-steps-grid{grid-template-columns:1fr}.studio-shop-steps{padding-top:45px}.studio-shop-faq{padding-top:45px}}
+
+/* Colección Dinero Inteligente */
+.studio-shop-price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:16px 0}
+.studio-shop-price strong{font-size:30px;color:#103e81;letter-spacing:-.045em}
+.studio-shop-price small{color:#60758f;font-size:12px}
+.studio-shop-bundle{margin:70px 0 10px;padding:46px;border-radius:28px;background:radial-gradient(circle at 85% 20%,#2776c280,transparent 50%),linear-gradient(125deg,#071a37,#123e7a);color:#fff;display:grid;grid-template-columns:1.3fr .7fr;gap:34px;align-items:center;overflow:hidden}
+.studio-shop-bundle-eyebrow{display:inline-block;color:#9dd6ff;font-weight:850;letter-spacing:.15em;font-size:11px}
+.studio-shop-bundle h2{font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.06em;line-height:1.15;margin:12px 0 18px}
+.studio-shop-bundle h2 em{font-style:normal;color:#80caff}
+.studio-shop-bundle p{color:#d3e2f7;line-height:1.85;max-width:600px}
+.studio-shop-bundle-prices{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:22px 0}
+.studio-shop-bundle-prices strong{font-size:44px;letter-spacing:-.05em}
+.studio-shop-bundle-old{text-decoration:line-through;color:#b5c6df;font-size:14px}
+.studio-shop-bundle-save{border-radius:99px;padding:6px 12px;background:#dbf9e6;color:#17673c;font-size:12px;font-weight:800}
+.studio-shop-bundle-status{font-size:12px;color:#a8c8ef}
+.studio-shop-bundle-books{display:grid;gap:18px}
+.studio-shop-bundle-books>div{min-height:150px;padding:23px;border:1px solid #a8d5ff55;border-radius:18px;background:#ffffff13;display:flex;flex-direction:column;justify-content:space-between;transform:rotate(-3deg)}
+.studio-shop-bundle-books>div+div{transform:rotate(3deg)}
+.studio-shop-bundle-books span{font-size:11px;color:#b9d9ff;font-weight:800;letter-spacing:.15em}
+.studio-shop-bundle-books strong{font-size:21px;line-height:1.25;overflow-wrap:anywhere}
+@media(max-width:760px){.studio-shop-bundle{padding:26px;grid-template-columns:1fr;gap:26px;margin-top:40px}.studio-shop-bundle-books{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.studio-shop-bundle-books>div{padding:15px;min-height:155px}.studio-shop-bundle-books strong{font-size:15px}}
