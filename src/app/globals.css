@@ -157,3 +157,40 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .studio-portfolio-more h3{font-size:25px;margin:0 0 10px;letter-spacing:-.04em}
 .studio-portfolio-more p{color:#65748d;font-size:14px;margin:0}
 @media(max-width:760px){.studio-portfolio-hero{padding:65px 0 75px}.studio-portfolio-list{padding:65px 0}.studio-portfolio-grid{grid-template-columns:1fr}.studio-portfolio-art{height:215px}.studio-portfolio-body{padding:25px}.studio-portfolio-body p{min-height:0}.studio-portfolio-more{display:block;padding:25px}.studio-portfolio-more .studio-button{margin-top:25px}}
+
+/* Digital bookshop and voluntary support */
+.studio-shop-hero{padding:100px 0;background:radial-gradient(circle at 83% 25%,#1676cd88,transparent 45%),linear-gradient(120deg,#07172f,#10386e);color:#fff}
+.studio-shop-hero .studio-section-kicker{color:#9fd4ff}
+.studio-shop-hero h1{font-size:clamp(3rem,6vw,5.5rem);max-width:870px;margin:15px 0 25px}
+.studio-shop-hero p{color:#c4d8f0;max-width:690px;font-size:17px;line-height:1.8}
+.studio-shop-section{padding:85px 0 100px;background:#f3f7fe}
+.studio-shop-section h2{margin:0 0 35px}
+.studio-shop-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.studio-shop-card{display:grid;grid-template-columns:minmax(140px,40%) 1fr;background:white;border:1px solid #dce7f5;border-radius:22px;overflow:hidden;box-shadow:0 20px 40px #10366c0c}
+.studio-shop-cover{position:relative;min-height:390px;padding:24px 17px;display:flex;flex-direction:column;justify-content:space-between;color:white;background:linear-gradient(145deg,#07162f,#166cbb)}
+.studio-shop-green{background:linear-gradient(145deg,#123c2b,#45a66c)}
+.studio-shop-cover-label{font-size:9px;font-weight:800;letter-spacing:.1em}
+.studio-shop-cover strong{font-size:clamp(24px,3vw,42px);line-height:1.06;letter-spacing:-.05em}
+.studio-shop-cover-symbol{font-size:80px;opacity:.45;text-align:right}
+.studio-shop-cover-author{font-size:12px;font-weight:750}
+.studio-shop-body{padding:30px 23px;display:flex;flex-direction:column;align-items:flex-start}
+.studio-shop-format{font-size:10px;font-weight:850;letter-spacing:.07em;color:#1c6fe0}
+.studio-shop-body h3{font-size:23px;line-height:1.2;letter-spacing:-.04em;margin:13px 0}
+.studio-shop-body p{font-size:13px;color:#64748b;line-height:1.75}
+.studio-shop-body .studio-shop-subtitle{font-weight:650;color:#304d78}
+.studio-shop-notice{display:grid;gap:7px;padding:14px;background:#edf4ff;border-radius:12px;margin-top:auto}
+.studio-shop-notice strong{font-size:12px;color:#185aaf}
+.studio-shop-notice span{font-size:11px;line-height:1.6;color:#5b7092}
+.studio-shop-amazon{margin-top:18px;font-size:12px;font-weight:850;color:#126de0}
+.studio-shop-payments{display:flex;justify-content:space-between;align-items:center;gap:30px;margin-top:34px;padding:35px;border-radius:22px;background:#e5effe}
+.studio-shop-payments h3{font-size:23px;margin:7px 0}
+.studio-shop-payments p{font-size:13px;color:#64758e;line-height:1.8;max-width:630px}
+.studio-shop-pay-badge{font-size:24px;font-weight:950;color:#155ab2;background:white;border-radius:16px;padding:18px 25px;white-space:nowrap}
+.studio-shop-pay-badge small{display:block;font-size:10px;color:#7d8ca1}
+.studio-donation{margin-top:22px;padding:18px;border:1px solid #dce8f7;border-radius:13px;background:#f5f9ff}
+.studio-donation strong{font-size:13px}
+.studio-donation p{font-size:12px;min-height:0;margin:8px 0 12px}
+.studio-donation a{display:inline-block;padding:10px 15px;background:#126ee2;color:white;font-size:12px;font-weight:800;border-radius:9px}
+.studio-donation small{display:block;color:#6c7e97;font-size:10px;margin-top:10px}
+@media(max-width:1050px){.studio-shop-grid{grid-template-columns:1fr}.studio-shop-card{max-width:720px}}
+@media(max-width:600px){.studio-shop-hero{padding:65px 0}.studio-shop-section{padding:60px 0}.studio-shop-card{grid-template-columns:1fr}.studio-shop-cover{min-height:260px}.studio-shop-cover strong{font-size:36px}.studio-shop-payments{display:block;padding:24px}.studio-shop-pay-badge{display:inline-block;margin-top:15px}}
