@@ -306,3 +306,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 /* Brand image inside the hero illustration */
 .studio-visual-core-brand{display:flex;align-items:center;justify-content:center;overflow:hidden;padding:18px;background:linear-gradient(140deg,#60c5ff,#0a58c5 65%,#07317a);box-sizing:border-box}
 .studio-visual-core-brand img{display:block;width:100%;height:100%;object-fit:contain;border-radius:12px;background:transparent;box-shadow:none}
+
+/* Real project artwork in homepage cards */
+.studio-project-art{position:relative;overflow:hidden}
+.studio-project-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;z-index:1;padding:15px;box-sizing:border-box}
+.studio-project-teal .studio-project-cover{object-fit:cover;padding:0}
+.studio-project-arrow{z-index:3}
