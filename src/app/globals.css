@@ -361,3 +361,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .book-detail-content ul{padding-left:22px;color:#405b79;line-height:1.95}
 .book-detail-content li{padding-left:4px}
 @media(max-width:760px){.book-detail-grid{grid-template-columns:1fr}.book-detail-art{position:static}.book-detail-art img{max-height:420px}}
+
+/* Consistent Isaías Díaz branding on book headers */
+.books-header-logo{display:inline-flex;align-items:center;max-width:min(220px,48vw);text-decoration:none}
+.books-header-logo img{display:block;width:100%;height:auto;max-height:68px;object-fit:contain;object-position:left center}
