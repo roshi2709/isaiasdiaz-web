@@ -70,3 +70,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .maintenance-foot{font-size:.8rem;color:#91a9c8;margin-top:40px}
 
 .maintenance-logo{display:block;width:min(300px,85%);height:auto;margin:0 auto 25px;background:#fff;border-radius:20px;padding:12px;box-shadow:0 14px 45px rgba(0,0,0,.16)}
+
+/* Isaias Diaz preview */
+.preview-notice{background:#0b2754;color:#fff;text-align:center;padding:9px 16px;font-size:.8rem;font-weight:700;letter-spacing:.04em}
+.preview-notice a{color:#a8d5ff;text-decoration:underline;text-underline-offset:3px}
