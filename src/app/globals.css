@@ -128,3 +128,32 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .studio-pricing-card li span{color:#079d6c;font-weight:900}
 .studio-pricing-fineprint{font-size:12px;line-height:1.8;color:#72819a;max-width:930px;margin:25px auto 0;text-align:center}
 @media(max-width:850px){.studio-pricing-grid{grid-template-columns:1fr;max-width:520px;margin:auto}.studio-pricing-card>p{min-height:0}.studio-pricing-heading{display:block}.studio-discount{margin-top:24px}.studio-pricing-hero{padding:65px 0}.studio-pricing-section{padding:65px 0}}
+
+/* Portfolio project listing */
+.studio-portfolio-home-action{text-align:center;margin-top:36px}
+.studio-portfolio-hero{padding:100px 0 105px;color:white;background:radial-gradient(circle at 80% 30%,#1768bc70,transparent 43%),linear-gradient(125deg,#07162f,#0d326b)}
+.studio-portfolio-hero .studio-section-kicker{color:#83c9ff}
+.studio-portfolio-hero h1{max-width:870px;font-size:clamp(3.1rem,6.4vw,5.6rem);margin:14px 0 23px}
+.studio-portfolio-hero p{max-width:660px;font-size:17px;line-height:1.85;color:#bed3ef;margin-bottom:30px}
+.studio-portfolio-list{background:#f4f8ff;padding:90px 0 105px}
+.studio-portfolio-list h2{margin:0 0 38px}
+.studio-portfolio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+.studio-portfolio-card{background:#fff;border:1px solid #dfe8f4;border-radius:22px;overflow:hidden;box-shadow:0 18px 45px #0a367c0b;transition:transform .2s}
+.studio-portfolio-card:hover{transform:translateY(-5px)}
+.studio-portfolio-art{height:260px;position:relative;display:grid;place-items:center;overflow:hidden;background:linear-gradient(130deg,#07245c,#178cf2)}
+.studio-portfolio-violet{background:linear-gradient(130deg,#261461,#8956ee)}
+.studio-portfolio-teal{background:linear-gradient(130deg,#064d67,#16b7b4)}
+.studio-portfolio-orange{background:linear-gradient(130deg,#763b08,#f7a12d)}
+.studio-portfolio-orbit{position:absolute;width:270px;height:270px;border-radius:50%;border:1px solid #ffffff52;box-shadow:0 0 0 42px #ffffff14,0 0 0 91px #ffffff0b;transform:rotate(-25deg)}
+.studio-portfolio-monogram{color:white;font-size:92px;font-weight:950;letter-spacing:-.1em;text-shadow:0 16px 32px #0004;z-index:1}
+.studio-portfolio-index{position:absolute;top:20px;left:24px;color:#fff;font-size:11px;letter-spacing:.14em;font-weight:850}
+.studio-portfolio-body{padding:33px}
+.studio-portfolio-body h3{font-size:32px;letter-spacing:-.055em;margin:0 0 9px}
+.studio-portfolio-body strong{font-size:14px;color:#1a4481}
+.studio-portfolio-body p{color:#67778e;line-height:1.8;font-size:14px;min-height:75px}
+.studio-portfolio-body .studio-tags{margin:18px 0 25px}
+.studio-portfolio-link{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #e3ebf5;padding-top:19px;color:#086be2;font-size:13px;font-weight:850}
+.studio-portfolio-more{display:flex;justify-content:space-between;align-items:center;gap:30px;background:#e7f1ff;border-radius:22px;padding:35px;margin-top:30px}
+.studio-portfolio-more h3{font-size:25px;margin:0 0 10px;letter-spacing:-.04em}
+.studio-portfolio-more p{color:#65748d;font-size:14px;margin:0}
+@media(max-width:760px){.studio-portfolio-hero{padding:65px 0 75px}.studio-portfolio-list{padding:65px 0}.studio-portfolio-grid{grid-template-columns:1fr}.studio-portfolio-art{height:215px}.studio-portfolio-body{padding:25px}.studio-portfolio-body p{min-height:0}.studio-portfolio-more{display:block;padding:25px}.studio-portfolio-more .studio-button{margin-top:25px}}
