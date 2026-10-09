@@ -222,3 +222,39 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .studio-contact-direct p{font-size:14px;color:#677993}
 .studio-contact-direct>a{font-size:16px;font-weight:850;color:#0a63d8;overflow-wrap:anywhere}
 @media(max-width:760px){.studio-contact-page-hero{padding:65px 0 75px}.studio-contact-page-main{padding:65px 0}.studio-contact-topic-grid{grid-template-columns:1fr}.studio-contact-direct{display:block;padding:25px}.studio-contact-direct>a{display:block;margin-top:22px}}
+
+/* Biography preview */
+.studio-bio-hero{padding:92px 0 104px;background:radial-gradient(circle at 85% 20%,#1b66b77a,transparent 45%),linear-gradient(125deg,#07162e,#103b79);color:#fff}
+.studio-bio-hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);align-items:center;gap:65px}
+.studio-bio-hero .studio-section-kicker{color:#9cd1ff}
+.studio-bio-hero h1{font-size:clamp(3rem,6.5vw,6rem);line-height:1.06;letter-spacing:-.065em;margin:15px 0 28px}
+.studio-bio-hero h1 em{color:#7fc7ff;font-style:normal}
+.studio-bio-hero p{max-width:660px;color:#c9dbf3;line-height:1.9}
+.studio-bio-hero .studio-bio-lead{font-size:20px;color:#fff;font-weight:600}
+.studio-bio-hero .studio-actions{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
+.studio-bio-art{min-height:390px;border:1px solid #8dc8ff48;border-radius:34px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle,#278ce34a,transparent 60%),linear-gradient(145deg,#12376b,#07172e);box-shadow:0 30px 90px #0004}
+.studio-bio-art:before,.studio-bio-art:after{content:'';position:absolute;border:1px solid #7dc6ff50;border-radius:50%;width:280px;height:280px}
+.studio-bio-art:after{width:365px;height:365px;border-color:#7dc6ff20}
+.studio-bio-art>span{position:relative;z-index:1;font-size:110px;line-height:1;font-weight:900;letter-spacing:-.11em;color:#fff}
+.studio-bio-art>span span{color:#51b5ff}
+.studio-bio-art small{z-index:1;position:relative;color:#a6d5ff;font-size:10px;letter-spacing:.2em;margin-top:20px;text-align:center}
+.studio-bio-intro,.studio-bio-values{padding:100px 0;background:#fff}
+.studio-bio-intro-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px}
+.studio-bio-intro-grid h2,.studio-bio-section h2{font-size:clamp(2.3rem,4vw,3.7rem);line-height:1.12;letter-spacing:-.055em;margin:12px 0 32px;color:#102849}
+.studio-bio-intro-grid h2 em,.studio-bio-section h2 em{font-style:normal;color:#126ee4}
+.studio-bio-intro-grid p{font-size:16px;line-height:1.95;color:#51647e;margin:0 0 20px}
+.studio-bio-section{padding:95px 0;background:#f0f6ff}
+.studio-bio-timeline{border-top:1px solid #d4e3f5}
+.studio-bio-milestone{display:grid;grid-template-columns:160px 1fr;gap:30px;padding:35px 0;border-bottom:1px solid #d4e3f5}
+.studio-bio-year{font-size:30px;font-weight:900;color:#126ee4;letter-spacing:-.04em}
+.studio-bio-milestone h3{font-size:23px;letter-spacing:-.03em;margin:0 0 5px;color:#102849}
+.studio-bio-milestone strong{color:#1462bc;font-size:14px}
+.studio-bio-milestone p{max-width:700px;color:#5b6d84;line-height:1.8}
+.studio-bio-section-soft{background:#fff}
+.studio-bio-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.studio-bio-cards article{border:1px solid #dce8f6;background:#f7faff;border-radius:22px;padding:30px}
+.studio-bio-cards article>span{display:grid;place-items:center;width:46px;height:46px;border-radius:12px;background:#dcecff;color:#0e6cdb;font-size:25px;font-weight:800}
+.studio-bio-cards h3{color:#102849;font-size:22px;letter-spacing:-.03em;margin:20px 0 10px}
+.studio-bio-cards p{color:#536982;line-height:1.85;font-size:15px}
+.studio-bio-values{background:#eaf3ff}
+@media(max-width:800px){.studio-bio-hero-grid,.studio-bio-intro-grid{grid-template-columns:1fr;gap:28px}.studio-bio-art{min-height:270px}.studio-bio-hero{padding:65px 0}.studio-bio-intro,.studio-bio-values,.studio-bio-section{padding:65px 0}.studio-bio-milestone{grid-template-columns:1fr;gap:4px}.studio-bio-cards{grid-template-columns:1fr}}
