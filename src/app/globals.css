@@ -194,3 +194,12 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .studio-donation small{display:block;color:#6c7e97;font-size:10px;margin-top:10px}
 @media(max-width:1050px){.studio-shop-grid{grid-template-columns:1fr}.studio-shop-card{max-width:720px}}
 @media(max-width:600px){.studio-shop-hero{padding:65px 0}.studio-shop-section{padding:60px 0}.studio-shop-card{grid-template-columns:1fr}.studio-shop-cover{min-height:260px}.studio-shop-cover strong{font-size:36px}.studio-shop-payments{display:block;padding:24px}.studio-shop-pay-badge{display:inline-block;margin-top:15px}}
+
+/* Fix: keep placeholder book-cover titles within their card at all widths */
+.studio-shop-card{min-width:0}
+.studio-shop-cover{min-width:0;overflow:hidden;isolation:isolate}
+.studio-shop-cover strong{display:block;max-width:100%;font-size:clamp(19px,2.15vw,30px);line-height:1.12;letter-spacing:-.045em;overflow-wrap:anywhere;word-break:normal;hyphens:auto}
+.studio-shop-body{min-width:0}
+.studio-shop-body h3,.studio-shop-body p{overflow-wrap:break-word}
+@media(max-width:1050px){.studio-shop-cover strong{font-size:clamp(24px,4vw,38px)}}
+@media(max-width:600px){.studio-shop-cover strong{font-size:clamp(30px,8vw,42px)}}
