@@ -327,3 +327,23 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 /* Blue outline for homepage service cards */
 .studio-service{border:2px solid #58a8f5;box-shadow:0 12px 32px #1266c514}
 .studio-service:hover{border-color:#0877ed;box-shadow:0 18px 42px #1266c529}
+
+/* Multilingual published books catalog */
+.books-page{max-width:1100px;margin-inline:auto}
+.books-series-intro{color:#566b87;line-height:1.8;max-width:780px;margin:0 0 32px}
+.books-catalog{display:grid;gap:24px}
+.books-item{display:grid;grid-template-columns:minmax(220px,35%) 1fr;gap:32px;padding:28px;background:#fff;border:1px solid #d9e6f8;border-radius:24px;box-shadow:0 15px 42px #123f7610;align-items:center}
+.books-cover-panel{min-height:360px;border-radius:18px;background:linear-gradient(145deg,#d9eaff,#f5f9ff);display:flex;align-items:center;justify-content:center;padding:18px;overflow:hidden}
+.books-cover-panel img{display:block;width:100%;max-height:430px;object-fit:contain;filter:drop-shadow(0 12px 12px #17396230)}
+.books-item-info h2{font-size:clamp(1.5rem,2.7vw,2.2rem);line-height:1.18;letter-spacing:-.04em;margin:12px 0}
+.books-item-info p{color:#526782;line-height:1.8}
+.books-series-label{font-size:11px;letter-spacing:.12em;font-weight:850;color:#1169d9;text-transform:uppercase}
+.books-author{font-weight:700}
+.books-item-info h3{font-size:1rem;margin:22px 0 10px;color:#0d2b54}
+.books-item-info ul{padding-left:22px;color:#4e6480;line-height:1.9;margin:0 0 16px}
+.books-format{font-size:13px}
+.books-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:18px}
+.books-shop-link{font-weight:750;color:#086be1;text-decoration:none}
+.books-shop-link:hover{text-decoration:underline}
+.books-note{display:block;color:#71839c;margin-top:12px}
+@media(max-width:720px){.books-item{grid-template-columns:1fr;padding:18px;gap:20px}.books-cover-panel{min-height:260px}.books-cover-panel img{max-height:350px}}
