@@ -347,3 +347,17 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .books-shop-link:hover{text-decoration:underline}
 .books-note{display:block;color:#71839c;margin-top:12px}
 @media(max-width:720px){.books-item{grid-template-columns:1fr;padding:18px;gap:20px}.books-cover-panel{min-height:260px}.books-cover-panel img{max-height:350px}}
+
+/* Individual book detail pages */
+.book-detail{max-width:1150px;margin:auto}
+.book-detail-back{display:inline-block;margin-bottom:28px;color:#1269d7;font-weight:750;text-decoration:none}
+.book-detail-grid{display:grid;grid-template-columns:minmax(250px,38%) 1fr;gap:clamp(25px,5vw,70px);align-items:start}
+.book-detail-art{position:sticky;top:28px;background:linear-gradient(145deg,#e5f0ff,#fff);border:1px solid #dbe7f8;border-radius:24px;padding:30px;display:flex;align-items:center;justify-content:center}
+.book-detail-art img{display:block;width:100%;max-height:650px;object-fit:contain;filter:drop-shadow(0 15px 16px #163b7333)}
+.book-detail-content h1{font-size:clamp(2rem,4vw,3.3rem);letter-spacing:-.055em;line-height:1.12;margin:15px 0}
+.book-detail-subtitle{font-size:1.17rem!important;color:#1669bc!important;font-weight:650}
+.book-detail-content p{color:#506680;line-height:1.9}
+.book-detail-content h2{font-size:1.3rem;margin:30px 0 12px}
+.book-detail-content ul{padding-left:22px;color:#405b79;line-height:1.95}
+.book-detail-content li{padding-left:4px}
+@media(max-width:760px){.book-detail-grid{grid-template-columns:1fr}.book-detail-art{position:static}.book-detail-art img{max-height:420px}}
