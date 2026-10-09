@@ -258,3 +258,18 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .studio-bio-cards p{color:#536982;line-height:1.85;font-size:15px}
 .studio-bio-values{background:#eaf3ff}
 @media(max-width:800px){.studio-bio-hero-grid,.studio-bio-intro-grid{grid-template-columns:1fr;gap:28px}.studio-bio-art{min-height:270px}.studio-bio-hero{padding:65px 0}.studio-bio-intro,.studio-bio-values,.studio-bio-section{padding:65px 0}.studio-bio-milestone{grid-template-columns:1fr;gap:4px}.studio-bio-cards{grid-template-columns:1fr}}
+
+/* Bookstore experience */
+.studio-shop-steps{padding:70px 0 25px}
+.studio-shop-steps h2,.studio-shop-faq h2{font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.05em;margin:10px 0 28px;color:#112849}
+.studio-shop-steps h2 em,.studio-shop-faq h2 em{font-style:normal;color:#1374e8}
+.studio-shop-steps-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.studio-shop-steps-grid article{padding:28px;border:1px solid #dce8f8;border-radius:20px;background:#fff;box-shadow:0 12px 35px #143a6b0a}
+.studio-shop-steps-grid article>span{display:inline-block;font-size:14px;color:#126ce2;font-weight:900;background:#e8f2ff;border-radius:10px;padding:9px 12px}
+.studio-shop-steps-grid h3{font-size:21px;color:#112849;margin:18px 0 8px}
+.studio-shop-steps-grid p{font-size:14px;color:#5a6e87;line-height:1.85}
+.studio-shop-faq{padding:70px 0 20px;max-width:900px;margin:auto}
+.studio-shop-faq details{background:#fff;border:1px solid #dce7f5;border-radius:14px;padding:18px 22px;margin:12px 0}
+.studio-shop-faq summary{font-weight:800;color:#163250;cursor:pointer}
+.studio-shop-faq details p{color:#5b6f89;font-size:14px;line-height:1.8;margin-bottom:0}
+@media(max-width:800px){.studio-shop-steps-grid{grid-template-columns:1fr}.studio-shop-steps{padding-top:45px}.studio-shop-faq{padding-top:45px}}
