@@ -1,17 +1,21 @@
 'use client';
 import { useEffect, useState } from 'react';
-type PayPalActions = { order: { create: (args: { purchase_units?: unknown[] }) => Promise<string> } };
 type PayPalSDK = { Buttons: (options: { createOrder: () => Promise<string>; onApprove: (data: { orderID: string }) => Promise<void>; onError: () => void }) => { render: (element: HTMLElement) => Promise<void> } };
 declare global { interface Window { paypal?: PayPalSDK } }
-const worker = process.env.NEXT_PUBLIC_BOOKS_WORKER_URL?.replace(/\/$/, '') || '';
-const clientId = process.env.NEXT_PUBLIC_PAYPAL_SANDBOX_CLIENT_ID || '';
+const worker = 'https://isaiasdiaz-books-payments.isaiasdiaz.workers.dev';
 const products = [{ id: 'finanzas', title: 'Finanzas personales para principiantes', price: '$2.99' }, { id: 'ahorro', title: 'Cómo ahorrar dinero aunque ganes poco', price: '$2.99' }, { id: 'paquete', title: 'Paquete de ambos libros', price: '$4.99' }];
 export default function BookCheckout() {
  const [selected, setSelected] = useState('paquete');
  const [error, setError] = useState('');
  const [downloads, setDownloads] = useState<{filename:string;url:string}[]>([]);
  const [ready, setReady] = useState(false);
- const configured = Boolean(worker && clientId);
+ const [clientId, setClientId] = useState('');
+ const configured = Boolean(clientId);
+ useEffect(() => {
+  let active = true;
+  fetch(worker + '/config').then(async res => { if (!res.ok) throw new Error('Servicio de pagos no disponible'); return res.json(); }).then(data => { if (active && data.environment === 'sandbox' && data.clientId) setClientId(data.clientId); }).catch(() => { if (active) setError('No se pudo cargar la configuración de PayPal Sandbox.'); });
+  return () => { active = false; };
+ }, []);
  useEffect(() => {
   if (!configured) return;
   const script = document.createElement('script');
