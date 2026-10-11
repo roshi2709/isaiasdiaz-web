@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 type PayPalSDK = { Buttons: (options: { createOrder: () => Promise<string>; onApprove: (data: { orderID: string }) => Promise<void>; onError: () => void }) => { render: (element: HTMLElement) => Promise<void> } };
 declare global { interface Window { paypal?: PayPalSDK } }
 const worker = 'https://isaiasdiaz-books-payments.isaiasdiaz.workers.dev';
-const products = [{ id: 'finanzas', title: 'Finanzas personales para principiantes', price: '$2.99' }, { id: 'ahorro', title: 'Cómo ahorrar dinero aunque ganes poco', price: '$2.99' }, { id: 'paquete', title: 'Paquete de ambos libros', price: '$4.99' }];
+const products = [{ id: 'finanzas', title: 'Finanzas personales para principiantes', price: '$2.99' }, { id: 'ahorro', title: 'Cómo ahorrar dinero aunque ganes poco', price: '$0.50 (prueba real)' }, { id: 'paquete', title: 'Paquete de ambos libros', price: '$4.99' }];
 export default function BookCheckout() {
  const [selected, setSelected] = useState('paquete');
  const [receiptEmail, setReceiptEmail] = useState('');
