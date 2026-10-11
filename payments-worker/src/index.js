@@ -28,6 +28,10 @@ async function handler(request, env) {
   if (request.method === "OPTIONS") return new Response(null, { status: 204, headers });
   if (!env.PAYPAL_CLIENT_ID || !env.PAYPAL_CLIENT_SECRET || !env.BOOKS || !env.DOWNLOADS || !env.ALLOWED_ORIGIN) return json({ error: "Payment service not configured" }, 503, headers);
   if (url.pathname === "/health" && request.method === "GET") return json({ ok: true, environment: env.PAYPAL_ENV === "live" ? "live" : "sandbox" }, 200, headers);
+  if (url.pathname === "/config" && request.method === "GET") {
+    if (origin !== env.ALLOWED_ORIGIN || env.PAYPAL_ENV !== "sandbox") return json({ error: "Unavailable" }, 403, headers);
+    return json({ clientId: env.PAYPAL_CLIENT_ID, environment: "sandbox" }, 200, headers);
+  }
   if (url.pathname === "/download" && request.method === "GET") {
     const code = url.searchParams.get("token") || "";
     if (!/^[a-f0-9]{64}$/.test(code)) return json({ error: "Invalid download link" }, 400, headers);
