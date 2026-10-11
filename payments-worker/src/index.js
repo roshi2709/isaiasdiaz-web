@@ -26,7 +26,7 @@ async function handler(request, env) {
   const url = new URL(request.url), origin = request.headers.get("origin") || "";
   const headers = cors(env, origin);
   if (request.method === "OPTIONS") return new Response(null, { status: 204, headers });
-  if (!env.PAYPAL_CLIENT_ID || !env.PAYPAL_CLIENT_SECRET || !env.BOOKS || !env.DOWNLOADS || !env.ALLOWED_ORIGIN) return json({ error: "Payment service not configured" }, 503, headers);
+  if (!env.PAYPAL_CLIENT_ID || !env.PAYPAL_CLIENT_SECRET || !env.BOOKS || !env.DOWNLOADS || !env.ORDERS_DB || !env.ALLOWED_ORIGIN) return json({ error: "Payment service not configured" }, 503, headers);
   if (url.pathname === "/health" && request.method === "GET") return json({ ok: true, environment: env.PAYPAL_ENV === "live" ? "live" : "sandbox" }, 200, headers);
   if (url.pathname === "/config" && request.method === "GET") {
     if (origin !== env.ALLOWED_ORIGIN || env.PAYPAL_ENV !== "sandbox") return json({ error: "Unavailable" }, 403, headers);
@@ -64,6 +64,18 @@ async function handler(request, env) {
     if (completed.status !== "COMPLETED") return json({ error: "Payment not completed" }, 409, headers);
     const capture = completed.purchase_units?.[0]?.payments?.captures?.[0];
     if (!capture || capture.status !== "COMPLETED" || capture.amount?.currency_code !== "USD" || capture.amount?.value !== (product.cents / 100).toFixed(2)) return json({ error: "Capture not confirmed" }, 409, headers);
+    // Persist verified PayPal capture in D1; unique IDs prevent duplicate sale records.
+    const payerEmail = typeof completed.payer?.email_address === "string" ? completed.payer.email_address.slice(0, 254) : null;
+    const amountCents = product.cents;
+    await env.ORDERS_DB.prepare(
+      "INSERT INTO orders (paypal_order_id, paypal_capture_id, product_id, amount_cents, currency, status, payer_email) VALUES (?, ?, ?, ?, 'USD', 'COMPLETED', ?) ON CONFLICT(paypal_order_id) DO NOTHING"
+    ).bind(id, capture.id, productId, amountCents, payerEmail).run();
+    const recorded = await env.ORDERS_DB.prepare(
+      "SELECT paypal_capture_id, product_id, amount_cents, status FROM orders WHERE paypal_order_id = ?"
+    ).bind(id).first();
+    if (!recorded || recorded.paypal_capture_id !== capture.id || recorded.product_id !== productId || recorded.amount_cents !== amountCents || recorded.status !== "COMPLETED") {
+      return json({ error: "Order record conflict; contact support" }, 409, headers);
+    }
     const cacheKey = "order:" + id;
     let links = await env.DOWNLOADS.get(cacheKey, "json");
     if (!links) {
