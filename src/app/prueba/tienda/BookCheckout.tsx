@@ -6,6 +6,7 @@ const worker = 'https://isaiasdiaz-books-payments.isaiasdiaz.workers.dev';
 const products = [{ id: 'finanzas', title: 'Finanzas personales para principiantes', price: '$2.99' }, { id: 'ahorro', title: 'Cómo ahorrar dinero aunque ganes poco', price: '$2.99' }, { id: 'paquete', title: 'Paquete de ambos libros', price: '$4.99' }];
 export default function BookCheckout() {
  const [selected, setSelected] = useState('paquete');
+ const [receiptEmail, setReceiptEmail] = useState('');
  const [error, setError] = useState('');
  const [downloads, setDownloads] = useState<{filename:string;url:string}[]>([]);
  const [ready, setReady] = useState(false);
@@ -35,7 +36,8 @@ export default function BookCheckout() {
   window.paypal.Buttons({
    createOrder: async () => {
     setError('');setDownloads([]);
-    const res = await fetch(worker + '/create-order', { method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({product:selected}) });
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(receiptEmail.trim())) throw new Error('Introduce un correo válido para recibir el PDF.');
+    const res = await fetch(worker + '/create-order', { method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({product:selected,email:receiptEmail.trim()}) });
     const data = await res.json();
     if (!res.ok || !data.id) throw new Error('No se pudo crear la orden.');
     return data.id;
@@ -51,11 +53,12 @@ export default function BookCheckout() {
    onError: () => { if(active)setError('No se pudo completar el pago. Inténtalo nuevamente.'); }
   }).render(container).catch(() => {if(active)setError('No se pudieron mostrar los botones de PayPal.');});
   return () => { active = false; container.innerHTML = ''; };
- }, [ready, selected]);
+ }, [ready, selected, receiptEmail]);
  return <section style={{padding:'24px',border:'1px solid #d8e4f2',borderRadius:18,margin:'32px 0',background:'#fff',color:'#143456'}}>
   <h2 style={{marginTop:0}}>Compra digital segura</h2>
   <p>Selecciona un libro o el paquete. Los enlaces de descarga se habilitan después de verificar el pago.</p>
   <div style={{display:'grid',gap:10,marginBottom:20}}>{products.map(p=><label key={p.id} style={{display:'flex',gap:10,alignItems:'center',padding:12,border:'1px solid #d8e4f2',borderRadius:10}}><input type="radio" name="book-product" checked={selected===p.id} onChange={()=>{setSelected(p.id);setDownloads([]);setError('');}}/><span style={{flex:1}}>{p.title}</span><strong>{p.price}</strong></label>)}</div>
+  <label style={{display:'grid',gap:8,marginBottom:20}}><strong>Correo electrónico para recibir tu compra</strong><input type="email" autoComplete="email" required value={receiptEmail} onChange={e=>setReceiptEmail(e.target.value)} placeholder="tu@correo.com" style={{padding:12,border:'1px solid #d8e4f2',borderRadius:10,fontSize:16}}/><small>En Sandbox se utilizará únicamente para enviarte el correo de prueba después de confirmar el pago.</small></label>
   {!configured ? <p role="status"><strong>Pagos en preparación.</strong> Estamos configurando PayPal y la entrega privada de los PDF. Todavía no se realizarán cargos.</p> : <><p><strong>Modo de pruebas Sandbox:</strong> no se cobrará dinero real.</p><div id="books-paypal-buttons" />{!ready && <p>Cargando PayPal…</p>}</>}
   {error && <p role="alert" style={{color:'#b42318'}}>{error}</p>}
   {downloads.length>0 && <div role="status"><h3>¡Pago confirmado!</h3><p>Descarga tus libros. Estos enlaces vencen en 24 horas.</p>{downloads.map(d=><p key={d.url}><a href={d.url} target="_blank" rel="noopener noreferrer">Descargar {d.filename} ↗</a></p>)}</div>}
