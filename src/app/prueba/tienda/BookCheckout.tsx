@@ -15,6 +15,10 @@ export default function BookCheckout() {
  const [environment, setEnvironment] = useState<'live' | 'sandbox' | ''>('');
  const configured = Boolean(clientId);
  useEffect(() => {
+  const requested = new URLSearchParams(window.location.search).get('producto');
+  if (requested && products.some(p => p.id === requested)) setSelected(requested);
+ }, []);
+ useEffect(() => {
   let active = true;
   fetch(worker + '/config').then(async res => { if (!res.ok) throw new Error('Servicio de pagos no disponible'); return res.json(); }).then(data => { if (active && (data.environment === 'sandbox' || data.environment === 'live') && data.clientId) { setClientId(data.clientId); setEnvironment(data.environment); } }).catch(() => { if (active) setError('No se pudo cargar la configuración de PayPal.'); });
   return () => { active = false; };
