@@ -55,7 +55,7 @@ export default function BookCheckout() {
      const data = await res.json();
      if (!res.ok || data.status !== 'COMPLETED') throw new Error('No se confirmó el pago. Contacta con soporte si se realizó un cargo.');
      if (active) setDownloads(data.downloads || []);
-    } catch(e) {if(active)setError((e instanceof Error?e.message:'Error al confirmar el pago') + ' Si se efectuó el cargo, no vuelvas a pagar; escribe a contacto@isaiasdiaz.com con el identificador de la transacción.');}
+    } catch(e) {if(active)setError((e instanceof Error?e.message:'Error al confirmar el pago') + ' Si se efectuó el cargo, no vuelvas a pagar; escribe a contacto@isaiasdiaz.com e indica el número de orden de PayPal: ' + orderID + '.');}
     finally {if(active)setProcessing(false);}
    },
    onError: () => { if(active)setError('No se pudo completar el proceso con PayPal. Si se efectuó algún cargo, no repitas el pago: escribe a contacto@isaiasdiaz.com con el identificador de la transacción para que podamos revisarla.'); }
