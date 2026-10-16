@@ -46,14 +46,19 @@ export default function BookCheckout() {
     const res = await fetch(worker + '/create-order', { method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({product:selected,email:receiptEmail.trim()}) });
     const data = await res.json();
     if (!res.ok || !data.id) throw new Error('No se pudo crear la orden.');
+    // Compatible con el Worker actual y con la próxima versión protegida.
+    if (typeof data.checkoutSecret === 'string' && /^[a-f0-9]{64}$/.test(data.checkoutSecret)) {
+     sessionStorage.setItem('id-checkout:' + data.id, data.checkoutSecret);
+    }
     return data.id;
    },
    onApprove: async ({orderID}) => {
     setProcessing(true);
     try {
-     const res = await fetch(worker + '/capture-order',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({orderID})});
+     const res = await fetch(worker + '/capture-order',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({orderID,checkoutSecret:sessionStorage.getItem('id-checkout:' + orderID) || undefined})});
      const data = await res.json();
      if (!res.ok || data.status !== 'COMPLETED') throw new Error('No se confirmó el pago. Contacta con soporte si se realizó un cargo.');
+     sessionStorage.removeItem('id-checkout:' + orderID);
      if (active) setDownloads(data.downloads || []);
     } catch(e) {if(active)setError((e instanceof Error?e.message:'Error al confirmar el pago') + ' Si se efectuó el cargo, no vuelvas a pagar; escribe a contacto@isaiasdiaz.com e indica el número de orden de PayPal: ' + orderID + '.');}
     finally {if(active)setProcessing(false);}
