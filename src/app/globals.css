@@ -432,3 +432,6 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
  .studio-mobile-menu summary:focus-visible{outline:3px solid #168bff;outline-offset:3px}
 }
 @media(max-width:380px){.studio-header-inner{padding-right:78px}.studio-header-cta{font-size:11px;padding:9px 10px}.studio-mobile-menu{right:10px}}
+
+/* Keep six shared navigation links readable at medium desktop widths */
+@media(min-width:761px) and (max-width:1120px){.studio-header nav{gap:clamp(9px,1.5vw,20px)}.studio-header nav a{font-size:12px}.studio-header-inner{gap:12px}.studio-header-cta{padding:10px 12px}}
