@@ -1,3 +1,4 @@
+import MobilePreviewMenu from '@/components/MobilePreviewMenu';
 import PreviewFooter from '@/components/PreviewFooter';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 export default function RecoveryPage() {
  return <div className="studio" style={{minHeight:'100vh'}}>
   <div className="studio-banner">LIBRERÍA DIGITAL · AYUDA CON TU COMPRA <Link href="/prueba/tienda/">Volver a la tienda ↗</Link></div>
-  <header className="studio-header"><div className="studio-container studio-header-inner">
+  <header className="studio-header"><MobilePreviewMenu/><div className="studio-container studio-header-inner">
    <Link className="studio-logo" href="/prueba/" aria-label="Isaías Díaz, inicio"><img className="studio-brand-image" src="/logo-id.png" alt="Isaías Díaz — Soluciones Digitales"/></Link>
    <nav aria-label="Navegación"><Link href="/prueba/">Inicio</Link><Link href="/prueba/tienda/">Tienda</Link></nav>
    <Link className="studio-header-cta" href="/prueba/contacto/">Contacto ↗</Link>
