@@ -1,3 +1,4 @@
+import PreviewFooter from '@/components/PreviewFooter';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import RecoveryForm from './RecoveryForm';
@@ -28,6 +29,6 @@ export default function RecoveryPage() {
     <Link href="/prueba/tienda/" style={{color:'#1259d6',fontWeight:700}}>← Volver a la tienda</Link>
    </section>
   </main>
-  <footer className="studio-footer"><div className="studio-container"><Link className="studio-footer-brand" href="/prueba/">ID<span>.</span> <small>ISAÍAS DÍAZ</small></Link><span>© {new Date().getFullYear()} Isaías Díaz · Vista previa</span></div></footer>
+  <PreviewFooter/>
  </div>;
 }
