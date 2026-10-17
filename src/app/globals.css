@@ -391,3 +391,26 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .book-detail-all{margin-top:25px}
 .book-detail-all a{color:#0c6bd6;font-weight:750;text-decoration:none}
 @media(max-width:480px){.book-detail-related>a{gap:12px;padding:12px}.book-detail-related img{width:72px;height:108px}.books-actions{gap:12px}}
+
+/* Branded footer and legal pages for the preview */
+.studio-footer-expanded{padding:40px 0 22px}
+.studio-footer .studio-footer-layout{display:grid;grid-template-columns:minmax(220px,1.5fr) repeat(2,minmax(160px,1fr));align-items:start;gap:36px}
+.studio-footer-identity{max-width:320px}
+.studio-footer-logo{display:block;width:185px;max-width:100%;height:auto;max-height:90px;object-fit:contain;object-position:left center;background:#fff;border-radius:12px;padding:9px}
+.studio-footer-identity p{color:#afc1db;font-size:13px;line-height:1.7;margin:16px 0 0}
+.studio-footer-nav{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.studio-footer-nav strong{color:#fff;font-size:14px;margin-bottom:4px}
+.studio-footer-nav a{color:#bfd0e8;font-size:13px;line-height:1.5;text-decoration:none}
+.studio-footer-nav a:hover,.studio-footer-bottom a:hover{color:#fff;text-decoration:underline}
+.studio-footer .studio-footer-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:35px;padding-top:19px;border-top:1px solid #284263;color:#afc1db;font-size:12px}
+.studio-footer-bottom a{color:#fff;font-weight:700}
+.studio-legal-content{max-width:880px;padding-top:60px;padding-bottom:80px}
+.studio .studio-legal-content h1{font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.13;letter-spacing:-.045em;margin:0 0 12px}
+.studio-legal-updated{color:#667892;font-size:13px;margin:0 0 32px}
+.studio-legal-content section{margin:0 0 28px}
+.studio .studio-legal-content h2{font-size:clamp(1.2rem,3vw,1.5rem);line-height:1.35;letter-spacing:-.015em;margin:0 0 10px}
+.studio-legal-content p{color:#425774;line-height:1.85;font-size:15px}
+.studio-legal-content a{color:#096bd7;text-decoration:underline;text-underline-offset:3px}
+.studio-legal-contact{margin-top:36px;padding:16px 20px;background:#eaf3ff;border-radius:12px}
+@media(max-width:700px){.studio-footer .studio-footer-layout{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}.studio-footer-identity{grid-column:1/-1}.studio-footer .studio-footer-bottom{align-items:flex-start;flex-direction:column}.studio-legal-content{padding-top:40px;padding-bottom:60px}}
+@media(max-width:380px){.studio-footer .studio-footer-layout{grid-template-columns:1fr}.studio-footer-identity{grid-column:auto}}
