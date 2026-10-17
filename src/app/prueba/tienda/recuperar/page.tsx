@@ -1,4 +1,4 @@
-import MobilePreviewMenu from '@/components/MobilePreviewMenu';
+import PreviewHeader from '@/components/PreviewHeader';
 import PreviewFooter from '@/components/PreviewFooter';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -13,11 +13,7 @@ export const metadata: Metadata = {
 export default function RecoveryPage() {
  return <div className="studio" style={{minHeight:'100vh'}}>
   <div className="studio-banner">LIBRERÍA DIGITAL · AYUDA CON TU COMPRA <Link href="/prueba/tienda/">Volver a la tienda ↗</Link></div>
-  <header className="studio-header"><MobilePreviewMenu/><div className="studio-container studio-header-inner">
-   <Link className="studio-logo" href="/prueba/" aria-label="Isaías Díaz, inicio"><img className="studio-brand-image" src="/logo-id.png" alt="Isaías Díaz — Soluciones Digitales"/></Link>
-   <nav aria-label="Navegación"><Link href="/prueba/">Inicio</Link><Link href="/prueba/tienda/">Tienda</Link></nav>
-   <Link className="studio-header-cta" href="/prueba/contacto/">Contacto ↗</Link>
-  </div></header>
+  <PreviewHeader/>
   <main className="studio-container" style={{paddingTop:65,paddingBottom:85,maxWidth:850}}>
    <div className="studio-section-kicker">COLECCIÓN DINERO INTELIGENTE / SOPORTE</div>
    <h1 style={{fontSize:'clamp(2.2rem,5vw,3.5rem)',margin:'0 0 20px',letterSpacing:'-.04em'}}>Recupera tus libros digitales</h1>
