@@ -1,4 +1,5 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import Script from 'next/script';
 export const metadata: Metadata = {metadataBase:new URL('https://isaiasdiaz.com'),other:{'p:domain_verify':'76446b2fce744c038faa74f369ad12ba'},title:{default:'Isaías Díaz | Desarrollo web, IA y soluciones digitales',template:'%s | Isaías Díaz'},description:'Desarrollo web, aplicaciones y automatización con inteligencia artificial. Conoce los proyectos y servicios digitales de Isaías Díaz.',robots:{index:true,follow:true},openGraph:{type:'website',siteName:'Isaías Díaz',url:'https://isaiasdiaz.com',locale:'es_SV',title:'Isaías Díaz | Soluciones digitales',description:'Desarrollo web, aplicaciones y automatización con IA.'},twitter:{card:'summary',title:'Isaías Díaz | Soluciones digitales',description:'Desarrollo web, aplicaciones y automatización con IA.'}};
-export default function RootLayout({children}:{children:React.ReactNode}) {return <html lang="es" suppressHydrationWarning><body>{children}</body></html>}
+export default function RootLayout({children}:{children:React.ReactNode}) {return <html lang="es" suppressHydrationWarning><head><Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9501270596689024" crossOrigin="anonymous" strategy="beforeInteractive" /></head><body>{children}</body></html>}
