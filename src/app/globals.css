@@ -414,3 +414,21 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .studio-legal-contact{margin-top:36px;padding:16px 20px;background:#eaf3ff;border-radius:12px}
 @media(max-width:700px){.studio-footer .studio-footer-layout{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}.studio-footer-identity{grid-column:1/-1}.studio-footer .studio-footer-bottom{align-items:flex-start;flex-direction:column}.studio-legal-content{padding-top:40px;padding-bottom:60px}}
 @media(max-width:380px){.studio-footer .studio-footer-layout{grid-template-columns:1fr}.studio-footer-identity{grid-column:auto}}
+
+/* Mobile preview navigation: visible replacement for hidden desktop links */
+.studio-mobile-menu{display:none}
+@media(max-width:760px){
+ .studio-header{position:relative;z-index:20}
+ .studio-header-inner{padding-right:86px;gap:10px}
+ .studio-header-cta{font-size:12px;padding:10px 12px;white-space:nowrap}
+ .studio-mobile-menu{display:block;position:absolute;top:50%;right:15px;transform:translateY(-50%);z-index:30}
+ .studio-mobile-menu summary{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;min-width:56px;min-height:48px;border:1px solid #d5e1f1;border-radius:10px;background:#f5f9ff;color:#0a2452;font-size:10px;font-weight:800;cursor:pointer;list-style:none}
+ .studio-mobile-menu summary::-webkit-details-marker{display:none}
+ .studio-menu-bars{font-size:25px;line-height:1.2}
+ .studio-mobile-menu[open] summary{background:#e4f0ff}
+ .studio-mobile-menu nav{display:flex;position:absolute;top:calc(100% + 12px);right:0;width:min(290px,calc(100vw - 30px));flex-direction:column;gap:0;padding:8px;background:#fff;border:1px solid #d5e1f1;border-radius:14px;box-shadow:0 18px 42px #07172f35}
+ .studio-mobile-menu nav a{display:block;color:#183a64;font-size:15px;font-weight:700;padding:12px 14px;border-radius:8px}
+ .studio-mobile-menu nav a:hover,.studio-mobile-menu nav a:focus-visible{background:#eaf3ff;color:#075ac2}
+ .studio-mobile-menu summary:focus-visible{outline:3px solid #168bff;outline-offset:3px}
+}
+@media(max-width:380px){.studio-header-inner{padding-right:78px}.studio-header-cta{font-size:11px;padding:9px 10px}.studio-mobile-menu{right:10px}}
