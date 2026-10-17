@@ -435,3 +435,13 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 
 /* Keep six shared navigation links readable at medium desktop widths */
 @media(min-width:761px) and (max-width:1120px){.studio-header nav{gap:clamp(9px,1.5vw,20px)}.studio-header nav a{font-size:12px}.studio-header-inner{gap:12px}.studio-header-cta{padding:10px 12px}}
+
+/* Portfolio card refinements */
+.studio-portfolio-grid{align-items:stretch}
+.studio-portfolio-card{display:flex;flex-direction:column;min-width:0;overflow:hidden}
+.studio-portfolio-body{display:flex;flex-direction:column;flex:1}
+.studio-portfolio-body .studio-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:18px}
+.studio-portfolio-body .studio-portfolio-link{margin-top:18px}
+.studio-portfolio-body p{overflow-wrap:anywhere}
+@media(max-width:760px){.studio-portfolio-grid{grid-template-columns:1fr}.studio-portfolio-card{max-width:620px;width:100%;margin-inline:auto}.studio-portfolio-body{padding:25px}.studio-portfolio-art{height:220px}}
+@media(max-width:420px){.studio-portfolio-body{padding:20px}.studio-portfolio-art{height:185px}.studio-portfolio-monogram{font-size:clamp(42px,14vw,70px)}}
