@@ -1,4 +1,4 @@
 import Link from 'next/link';
 import MobilePreviewMenu from '@/components/MobilePreviewMenu';
-const navigation=[{href:'/',label:'Inicio'},{href:'/desarrollo-web/',label:'Servicios'},{href:'/#proyectos',label:'Proyectos'},{href:'/tienda/',label:'Libros'},{href:'/acerca-de-mi/',label:'Sobre mí'},{href:'/contacto/',label:'Contacto'}];
+const navigation=[{href:'/',label:'Inicio'},{href:'/desarrollo-web/',label:'Servicios'},{href:'/#proyectos',label:'Proyectos'},{href:'/tienda/',label:'Libros'},{href:'https://blog.isaiasdiaz.com/',label:'Blog'},{href:'/acerca-de-mi/',label:'Sobre mí'},{href:'/contacto/',label:'Contacto'}];
 export default function PreviewHeader(){return <header className="studio-header"><MobilePreviewMenu/><div className="studio-container studio-header-inner"><Link className="studio-logo" href="/" aria-label="Isaías Díaz, inicio"><img className="studio-brand-image" src="/logo-id.png" alt="Isaías Díaz — Soluciones Digitales"/></Link><nav aria-label="Navegación principal">{navigation.map(item=><Link key={item.href} href={item.href}>{item.label}</Link>)}</nav><Link className="studio-header-cta" href="/contacto/">Contacto ↗</Link></div></header>}
