@@ -6,11 +6,20 @@ type BloggerEntry = { title?: {$t:string}; link?: {rel:string;href:string}[]; co
 type BloggerFeed = { feed?: {entry?: BloggerEntry[]} };
 const BLOG = 'https://blog.isaiasdiaz.com';
 const stripHtml = (html:string) => html.replace(/<[^>]*>/g,' ').replace(/&nbsp;/g,' ').replace(/&amp;/g,'&').replace(/&#39;/g,"'").replace(/&quot;/g,'"').replace(/\s+/g,' ').trim();
+function highResolutionImage(url:string) {
+  // Blogger thumbnails are often just 72px wide; request the original image at card resolution.
+  return url
+    .replace(/\/s\d+(?:-[a-z0-9-]+)?\//i, '/w1200-h675-p-k-no/')
+    .replace(/\/w\d+(?:-h\d+)?(?:-[a-z0-9-]+)?\//i, '/w1200-h675-p-k-no/')
+    .replace(/=s\d+(?:-[a-z0-9-]+)?(?=$|[&#?])/i, '=w1200-h675-p-k-no')
+    .replace(/=w\d+(?:-h\d+)?(?:-[a-z0-9-]+)?(?=$|[&#?])/i, '=w1200-h675-p-k-no');
+}
 function thumbnail(entry:BloggerEntry) {
-  if (entry.media$thumbnail?.url) return entry.media$thumbnail.url.replace(/\/s\d+(-c)?\//, '/w800-h450-p-k-no/');
   const html=entry.content?.$t||'';
   const match=html.match(/<img[^>]+src=["']([^"']+)["']/i);
-  return match?.[1] || '';
+  // Full post images are preferable to the tiny media$thumbnail field.
+  const source=match?.[1] || entry.media$thumbnail?.url || '';
+  return source ? highResolutionImage(source.replace(/&amp;/g,'&')) : '';
 }
 export default function LatestBlogPosts(){
   const [posts,setPosts]=useState<Article[]>([]);
